@@ -26152,10 +26152,10 @@ exports["default"] = _default;
 
 const exec = __nccwpck_require__(1514)
 
-async function main(pathsToSearch = '') {
+async function main(pathsToSearch = '', branchToCompare = '') {
   throwsForInvalidPaths(pathsToSearch)
 
-  return hasChanged(pathsToSearch)
+  return hasChanged(pathsToSearch, branchToCompare)
 }
 
 function throwsForInvalidPaths(pathsToSearch) {
@@ -26169,7 +26169,7 @@ function getCWD() {
 }
 
 async function hasChanged(pathsToSearch, branchToCompare) {
-  if (!branchToCompare) {
+  if ((!branchToCompare) || (branchToCompare === '')) {
     branchToCompare = 'HEAD~1'
   }
   const paths = pathsToSearch.split(' ')
