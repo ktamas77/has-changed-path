@@ -1,6 +1,6 @@
 {
   "name": "has-changed-path",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GitHub Action that saves time and money in monorepo environments",
   "main": "src/index.js",
   "engines": {
@@ -12,13 +12,13 @@
     "test": "jest",
     "all": "yarn lint && yarn prepare && yarn test"
   },
-  "repository": "git@github.com:MarceloPrado/has-changed-path.git",
-  "author": "Marcelo Prado <lelo@hey.com>",
+  "repository": "git@github.com:ktamas77/has-changed-path.git",
+  "author": "Tamas Kalman <ktamas77@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MarceloPrado/has-changed-path/issues"
+    "url": "https://github.com/ktamas77/has-changed-path/issues"
   },
-  "homepage": "https://github.com/MarceloPrado/has-changed-path#readme",
+  "homepage": "https://github.com/ktamas77/has-changed-path#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1"

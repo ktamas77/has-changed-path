@@ -4,6 +4,10 @@ inputs:
   paths: # one or more paths
     description: "Paths to detect changes"
     required: true
+  branch: # branch to compare against. Defaults to previous commit
+    description: "Branch to compare against"
+    example: "origin/staging"
+    required: false
 outputs:
   changed:
     description: "Boolean indicating if the paths were changed in previous commit"

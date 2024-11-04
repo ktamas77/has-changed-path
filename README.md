@@ -1,7 +1,13 @@
 # Has Changed Path - GitHub Action
 
+## Updates to original action
+
+- Added `branch` input to allow comparing to a specific branch instead of the previous commit.
+- Updated to use `actions/checkout@v4`
+- Updated to use Node v20
+
 <p align="left">
-  <a href="https://github.com/MarceloPrado/has-changed-path/actions"><img alt="has-changed-path status" src="https://github.com/MarceloPrado/has-changed-path/workflows/unit-tests/badge.svg"></a>
+  <a href="https://github.com/ktamas77/has-changed-path/actions"><img alt="has-changed-path status" src="https://github.com/ktamas77/has-changed-path/workflows/unit-tests/badge.svg"></a>
 </p>
 
 This action outputs whether a path or combination of paths has changed in the previous commit.
@@ -48,7 +54,7 @@ jobs:
         with:
           fetch-depth: 100
 
-      - uses: marceloprado/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.1
         id: changed-front
         with:
           paths: packages/front
@@ -56,6 +62,31 @@ jobs:
       - name: Deploy front
         if: steps.changed-front.outputs.changed == 'true'
         run: /deploy-front.sh
+```
+
+### Detecting changes in a specific branch:
+
+Helpful when you want to compare the current branch with another branch, especially in PRs
+
+```yaml
+name: Comparing with another branch
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 100
+
+      - uses: ktamas77/has-changed-path@v1.0.1
+        id: changed-front
+        with:
+          paths: packages/front
+          branch: origin/staging
 ```
 
 ### Detecting changes in multiple paths:
@@ -77,7 +108,7 @@ jobs:
         with:
           fetch-depth: 100
 
-      - uses: marceloprado/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.1
         id: changed-front
         with:
           paths: packages/front packages/common
@@ -110,14 +141,14 @@ jobs:
           repsitory: my-org/my-tools
           path: my-tools
 
-      - uses: marceloprado/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.1
         id: changed-main
         with:
           paths: packages/front
         env:
           SOURCE: main
 
-      - uses: marceloprado/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.1
         id: changed-my-tools
         with:
           paths: somewhere/else
@@ -135,7 +166,7 @@ jobs:
 
 ## How it works?
 
-The action itself is pretty simple - take a look at [`src/hasChanged.js`](https://github.com/MarceloPrado/has-changed-path/blob/master/src/hasChanged.js) ;) .
+The action itself is pretty simple - take a look at [`src/hasChanged.js`](https://github.com/ktamas77/has-changed-path/blob/master/src/hasChanged.js) ;) .
 
 Basically, we compare the latest HEAD with the previous one using `git diff` command. This allows us to effectively detect changes in most cases (squashed merges and merges with merge commit).
 
