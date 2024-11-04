@@ -54,7 +54,7 @@ jobs:
         with:
           fetch-depth: 100
 
-      - uses: ktamas77/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.3
         id: changed-front
         with:
           paths: packages/front
@@ -82,7 +82,7 @@ jobs:
         with:
           fetch-depth: 100
 
-      - uses: ktamas77/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.3
         id: changed-front
         with:
           paths: packages/front
@@ -108,7 +108,7 @@ jobs:
         with:
           fetch-depth: 100
 
-      - uses: ktamas77/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.3
         id: changed-front
         with:
           paths: packages/front packages/common
@@ -141,14 +141,14 @@ jobs:
           repsitory: my-org/my-tools
           path: my-tools
 
-      - uses: ktamas77/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.3
         id: changed-main
         with:
           paths: packages/front
         env:
           SOURCE: main
 
-      - uses: ktamas77/has-changed-path@v1.0.1
+      - uses: ktamas77/has-changed-path@v1.0.3
         id: changed-my-tools
         with:
           paths: somewhere/else
